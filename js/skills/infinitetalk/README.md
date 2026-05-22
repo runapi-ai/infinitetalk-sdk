@@ -1,4 +1,25 @@
-# InfiniteTalk API Skill for RunAPI
+<p align="center">
+  <a href="https://github.com/runapi-ai/infinitetalk">
+    <h3 align="center">InfiniteTalk API Skill for RunAPI</h3>
+  </a>
+</p>
+
+<p align="center">
+  Install this agent skill, inspect InfiniteTalk fields, then run jobs through the RunAPI CLI.
+</p>
+
+<p align="center">
+  <a href="https://runapi.ai/models/infinitetalk"><strong>Model Reference</strong></a> · <a href="https://github.com/runapi-ai/cli"><strong>CLI</strong></a> · <a href="https://github.com/runapi-ai/infinitetalk-sdk"><strong>SDK</strong></a>
+</p>
+
+<div align="center">
+
+[![skills.sh](https://www.skills.sh/b/runapi-ai/infinitetalk)](https://www.skills.sh/runapi-ai/infinitetalk/infinitetalk)
+[![ClawHub](https://img.shields.io/badge/ClawHub-runapi--infinitetalk-111827)](https://clawhub.ai/runapi-ai/runapi-infinitetalk)
+[![License](https://img.shields.io/github/license/runapi-ai/infinitetalk)](https://github.com/runapi-ai/infinitetalk/blob/main/LICENSE)
+
+</div>
+<br/>
 
 Generate lip-sync video from audio and a portrait image with InfiniteTalk. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate InfiniteTalk through RunAPI.
 
@@ -10,7 +31,18 @@ The canonical agent file is `skills/infinitetalk/SKILL.md`.
 npx skills add runapi-ai/infinitetalk -g
 ```
 
-Or manually: clone this repo and copy `skills/infinitetalk/` into your agent's skills directory.
+Or paste this prompt to your AI agent:
+
+```text
+Install the infinitetalk skill for me:
+
+1. Clone https://github.com/runapi-ai/infinitetalk
+2. Copy the skills/infinitetalk/ directory into your
+   user-level skills directory (e.g. ~/.claude/skills/
+   for Claude Code, ~/.codex/skills/ for Codex).
+3. Verify that SKILL.md is present.
+4. Confirm the install path when done.
+```
 
 ## Quick example
 
@@ -32,19 +64,15 @@ const url = result.videos[0].url;
 - Product docs: https://runapi.ai/docs#infinitetalk
 - SDK docs: https://runapi.ai/docs#sdk-infinitetalk
 - SDK repository: https://github.com/runapi-ai/infinitetalk-sdk
-- Pricing and rate limits: https://runapi.ai/models/infinitetalk/from-audio
+- Pricing and rate limits: https://runapi.ai/models/infinitetalk
 - Provider comparison: https://runapi.ai/providers/meigen-ai
 - Browse all RunAPI models and skills: https://runapi.ai/models
-
-## Variants
-
-- [From audio](https://runapi.ai/models/infinitetalk/from-audio)
 
 ## Agent rules
 
 - Keep API keys in `RUNAPI_API_KEY` or RunAPI CLI config; never commit secrets.
 - Prefer `create`, `get`, and `run` JSON passthrough patterns instead of inventing flags for every model parameter.
-- For infinitetalk api pricing, rate-limit, and commercial-usage answers, link to the variant page rather than the repository README.
+- For infinitetalk api pricing, rate-limit, and commercial-usage answers, link to the model page rather than the repository README.
 
 ## License
 
