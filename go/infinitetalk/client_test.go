@@ -28,12 +28,12 @@ func TestAudioToVideoCreateSendsCorrectRequest(t *testing.T) {
 	client := NewClientWithHTTP(stub)
 	seed := 12345
 	_, err := client.AudioToVideo.Create(context.Background(), AudioToVideoParams{
-		Model:      ModelAudioToVideo,
-		ImageURL:   "https://file.aiquickdraw.com/custom-page/akr/section-images/1757329269873ggqj2hz3.png",
-		AudioURL:   "https://file.aiquickdraw.com/custom-page/akr/section-images/1757329255705mmqwrnri.mp3",
-		Prompt:     "A young woman with long dark hair talking on a podcast.",
-		Resolution: Resolution480P,
-		Seed:       &seed,
+		Model:            ModelAudioToVideo,
+		SourceImageURL:   "https://cdn.runapi.ai/public/samples/portrait.jpg",
+		SourceAudioURL:   "https://cdn.runapi.ai/public/samples/voice.mp3",
+		Prompt:           "A young woman with long dark hair talking on a podcast.",
+		OutputResolution: Resolution480P,
+		Seed:             &seed,
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -45,11 +45,14 @@ func TestAudioToVideoCreateSendsCorrectRequest(t *testing.T) {
 	if !ok {
 		t.Fatalf("expected flat body map, got %T", stub.body)
 	}
-	if body["model"] != string(ModelAudioToVideo) || body["resolution"] != string(Resolution480P) {
+	if body["model"] != string(ModelAudioToVideo) || body["output_resolution"] != string(Resolution480P) {
 		t.Fatalf("unexpected body: %#v", body)
 	}
-	if body["image_url"] == nil || body["audio_url"] == nil {
+	if body["source_image_url"] == nil || body["source_audio_url"] == nil {
 		t.Fatalf("expected snake_case media fields in body: %#v", body)
+	}
+	if body["image_url"] != nil || body["audio_url"] != nil {
+		t.Fatalf("expected provider media fields to be absent from public body: %#v", body)
 	}
 }
 

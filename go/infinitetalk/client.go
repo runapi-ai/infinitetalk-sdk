@@ -3,8 +3,8 @@
 //	client, err := infinitetalk.NewClient(option.WithAPIKey("sk-your-api-key"))
 //	result, err := client.AudioToVideo.Run(ctx, infinitetalk.AudioToVideoParams{
 //	    Model: infinitetalk.ModelAudioToVideo,
-//	    ImageURL: "https://file.aiquickdraw.com/custom-page/akr/section-images/1757329269873ggqj2hz3.png",
-//	    AudioURL: "https://file.aiquickdraw.com/custom-page/akr/section-images/1757329255705mmqwrnri.mp3",
+//	    SourceImageURL: "https://cdn.runapi.ai/public/samples/portrait.jpg",
+//	    SourceAudioURL: "https://cdn.runapi.ai/public/samples/voice.mp3",
 //	    Prompt: "A young woman with long dark hair talking on a podcast.",
 //	})
 package infinitetalk

@@ -17,20 +17,20 @@ describe('Infinitetalk resources', () => {
 
     await audioToVideo.create({
       model: 'infinitetalk-from-audio',
-      image_url: 'https://file.aiquickdraw.com/custom-page/akr/section-images/1757329269873ggqj2hz3.png',
-      audio_url: 'https://file.aiquickdraw.com/custom-page/akr/section-images/1757329255705mmqwrnri.mp3',
+      source_image_url: 'https://cdn.runapi.ai/public/samples/portrait.jpg',
+      source_audio_url: 'https://cdn.runapi.ai/public/samples/voice.mp3',
       prompt: 'A young woman with long dark hair talking on a podcast.',
-      resolution: '480p',
+      output_resolution: '480p',
       seed: 12345,
     });
 
     expect(mockHttp.request).toHaveBeenCalledWith('POST', '/api/v1/infinitetalk/audio_to_video', {
       body: {
         model: 'infinitetalk-from-audio',
-        image_url: 'https://file.aiquickdraw.com/custom-page/akr/section-images/1757329269873ggqj2hz3.png',
-        audio_url: 'https://file.aiquickdraw.com/custom-page/akr/section-images/1757329255705mmqwrnri.mp3',
+        source_image_url: 'https://cdn.runapi.ai/public/samples/portrait.jpg',
+        source_audio_url: 'https://cdn.runapi.ai/public/samples/voice.mp3',
         prompt: 'A young woman with long dark hair talking on a podcast.',
-        resolution: '480p',
+        output_resolution: '480p',
         seed: 12345,
       },
     });

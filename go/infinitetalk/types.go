@@ -32,11 +32,11 @@ type AudioToVideoResponse struct {
 }
 
 type AudioToVideoParams struct {
-	Model       AudioToVideoModel `json:"model" help:"required; must be infinitetalk-from-audio"`
-	ImageURL    string            `json:"image_url" help:"required; public image URL"`
-	AudioURL    string            `json:"audio_url" help:"required; public audio URL"`
-	Prompt      string            `json:"prompt" help:"required; max 5000 chars"`
-	CallbackURL string            `json:"callback_url,omitempty" help:"optional; webhook URL"`
-	Resolution  Resolution        `json:"resolution,omitempty" help:"optional; 480p or 720p"`
-	Seed        *int              `json:"seed,omitempty" help:"optional; integer between 10000 and 1000000"`
+	Model            AudioToVideoModel `json:"model" help:"required; model slug"`
+	SourceImageURL   string            `json:"source_image_url" help:"required; source image URL"`
+	SourceAudioURL   string            `json:"source_audio_url" help:"required; source audio URL"`
+	Prompt           string            `json:"prompt" help:"required; max 5000 chars"`
+	CallbackURL      string            `json:"callback_url,omitempty" help:"optional; webhook URL"`
+	OutputResolution Resolution        `json:"output_resolution,omitempty" help:"optional; output resolution"`
+	Seed             *int              `json:"seed,omitempty" help:"optional; integer between 10000 and 1000000"`
 }

@@ -1,6 +1,6 @@
 # Infinitetalk API Ruby SDK for RunAPI
 
-The infinitetalk api Ruby SDK is the language-specific package for InfiniteTalk on RunAPI. Use this infinitetalk api package for text-to-video, image-to-video, video-to-video, animation, and edit flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
+The infinitetalk api Ruby SDK is the language-specific package for InfiniteTalk on RunAPI. Use this infinitetalk api package for text-to-video, image-to-video, video editing, and animation flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
 This infinitetalk api README is the Ruby package guide inside the public `infinitalk-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/infinitalk; for API reference, use https://runapi.ai/docs#infinitalk; for SDK docs, use https://runapi.ai/docs#sdk-infinitalk.
 

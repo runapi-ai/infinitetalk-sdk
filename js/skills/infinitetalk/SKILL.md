@@ -34,7 +34,7 @@ Generate and edit video with InfiniteTalk through RunAPI. The default path for o
 
 The `runapi` binary is the runtime dependency. Run `runapi auth status` first. For agents and headless runs, prefer `RUNAPI_API_KEY` or import it into saved config with `printf '%s' "$RUNAPI_API_KEY" | runapi auth import-token --token -`. Use `runapi login` only when the user explicitly wants interactive browser auth.
 
-Inspect the available actions and request fields with CLI help:
+Inspect the available commands and request fields with CLI help:
 
 ```shell
 runapi infinitetalk --help
@@ -54,7 +54,7 @@ runapi infinitetalk audio-to-video --async --input-file request.json
 runapi wait <task-id> --service infinitetalk --action audio-to-video
 ```
 
-Available actions: `audio-to-video`.
+Available commands: `audio-to-video`.
 
 ## SDK integration path
 

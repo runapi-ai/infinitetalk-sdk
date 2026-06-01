@@ -40,15 +40,15 @@ module RunApi
             raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::MODELS.join(", ")}"
           end
 
-          validate_required!(params, :image_url)
-          validate_required!(params, :audio_url)
+          validate_required!(params, :source_image_url)
+          validate_required!(params, :source_audio_url)
           prompt = param(params, :prompt)
           raise Core::ValidationError, "prompt is required" unless prompt.is_a?(String) && !prompt.empty?
           if prompt.length > PROMPT_MAX_LENGTH
             raise Core::ValidationError, "prompt must be at most #{PROMPT_MAX_LENGTH} characters"
           end
 
-          validate_optional!(params, :resolution, Types::RESOLUTIONS)
+          validate_optional!(params, :output_resolution, Types::RESOLUTIONS)
 
           seed = param(params, :seed)
           return if seed.nil?

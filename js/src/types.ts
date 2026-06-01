@@ -14,11 +14,11 @@ export interface Video {
 
 export interface AudioToVideoParams {
   model: InfinitetalkModel;
-  image_url: string;
-  audio_url: string;
+  source_image_url: string;
+  source_audio_url: string;
   prompt: string;
   callback_url?: string;
-  resolution?: Resolution;
+  output_resolution?: Resolution;
   seed?: number;
 }
 

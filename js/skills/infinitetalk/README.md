@@ -52,8 +52,8 @@ import { InfinitetalkClient } from '@runapi.ai/infinitetalk';
 const client = new InfinitetalkClient();
 const result = await client.audioToVideo.run({
   model: 'infinitetalk-from-audio',
-  image_url: 'https://cdn.example.com/portrait.jpg',
-  audio_url: 'https://cdn.example.com/speech.mp3',
+  source_image_url: 'https://cdn.runapi.ai/public/samples/portrait.jpg',
+  source_audio_url: 'https://cdn.runapi.ai/public/samples/voice.mp3',
 });
 const url = result.videos[0].url;
 ```

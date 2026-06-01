@@ -13,12 +13,12 @@ module RunApi
       class AudioToVideoResponse < RunApi::Core::TaskResponse
         required :id, String
         optional :status, String, enum: -> { RunApi::Core::TaskResponse::Status::ALL }
-        optional :videos, [ -> { Video } ]
+        optional :videos, [-> { Video }]
         optional :error, String
       end
 
       class CompletedAudioToVideoResponse < AudioToVideoResponse
-        required :videos, [ -> { Video } ]
+        required :videos, [-> { Video }]
       end
     end
   end
