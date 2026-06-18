@@ -3,6 +3,8 @@
 module RunApi
   module Infinitetalk
     module Resources
+      # Generates lip-synced talking-head videos from a portrait image and an audio track.
+      # The output video shows the person speaking or singing in sync with the audio.
       class AudioToVideo
         include RunApi::Core::ResourceHelpers
 
