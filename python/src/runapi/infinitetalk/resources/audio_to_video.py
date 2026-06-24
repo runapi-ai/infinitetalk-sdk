@@ -6,9 +6,8 @@ from typing import Any, Dict
 
 from runapi.core import Resource, ValidationError
 
+from ..contract_gen import CONTRACT
 from ..types import (
-    MODELS,
-    RESOLUTIONS,
     AudioToVideoResponse,
     CompletedAudioToVideoResponse,
 )
@@ -41,23 +40,13 @@ class AudioToVideo(Resource):
         return self._request("get", f"{self.ENDPOINT}/{id}")
 
     def _validate_params(self, params: Dict[str, Any]) -> None:
-        model = params.get("model")
-        if not model:
-            raise ValidationError("model is required")
-        if model not in MODELS:
-            joined = ", ".join(MODELS)
-            raise ValidationError(f"Invalid model: {model}. Must be one of: {joined}")
-
-        self._validate_required(params, "source_image_url")
-        self._validate_required(params, "source_audio_url")
+        self._validate_contract(CONTRACT["audio-to-video"], params)
 
         prompt = params.get("prompt")
         if not (isinstance(prompt, str) and prompt != ""):
             raise ValidationError("prompt is required")
         if len(prompt) > PROMPT_MAX_LENGTH:
             raise ValidationError(f"prompt must be at most {PROMPT_MAX_LENGTH} characters")
-
-        self._validate_optional(params, "output_resolution", RESOLUTIONS)
 
         seed = params.get("seed")
         if seed is None:
@@ -70,13 +59,6 @@ class AudioToVideo(Resource):
         raise ValidationError(
             f"seed must be an integer between {SEED_RANGE.start} and {SEED_RANGE.stop - 1}"
         )
-
-    @staticmethod
-    def _validate_required(params: Dict[str, Any], key: str) -> None:
-        value = params.get(key)
-        present = (value != "") if isinstance(value, str) else (value is not None)
-        if not present:
-            raise ValidationError(f"{key} is required")
 
     @staticmethod
     def _parse_integer(value: Any) -> Any:

@@ -1,11 +1,8 @@
-"""InfiniteTalk model lists, enums, and response models."""
+"""InfiniteTalk response models."""
 
 from __future__ import annotations
 
 from runapi.core import BaseModel, TaskResponse, optional, required
-
-MODELS = ["infinitetalk-from-audio"]
-RESOLUTIONS = ["480p", "720p"]
 
 
 class Video(BaseModel):

@@ -2,6 +2,7 @@
 
 require "runapi/core"
 require_relative "infinitetalk/types"
+require_relative "infinitetalk/contract_gen"
 require_relative "infinitetalk/resources/audio_to_video"
 require_relative "infinitetalk/client"
 

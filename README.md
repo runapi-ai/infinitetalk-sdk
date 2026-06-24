@@ -7,61 +7,105 @@
 </h3>
 
 <p align="center">
-  InfiniteTalk API SDKs for JavaScript, Ruby, and Go on RunAPI.
+  InfiniteTalk API SDKs for JavaScript, Python, Ruby, Go, and Java on RunAPI.
 </p>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/@runapi.ai/infinitetalk)](https://www.npmjs.com/package/@runapi.ai/infinitetalk)
+[![PyPI](https://img.shields.io/pypi/v/runapi-infinitetalk)](https://pypi.org/project/runapi-infinitetalk/)
 [![RubyGems](https://img.shields.io/gem/v/runapi-infinitetalk)](https://rubygems.org/gems/runapi-infinitetalk)
 [![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/infinitetalk-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/infinitetalk-sdk/go)
+[![Maven Central](https://img.shields.io/maven-central/v/ai.runapi/runapi-infinitetalk)](https://central.sonatype.com/artifact/ai.runapi/runapi-infinitetalk)
 [![License](https://img.shields.io/github/license/runapi-ai/infinitetalk-sdk)](https://github.com/runapi-ai/infinitetalk-sdk/blob/main/LICENSE)
 
 </div>
 <br/>
 
-The infinitetalk api SDK packages JavaScript, Ruby, and Go clients for InfiniteTalk on RunAPI. Use this infinitetalk api SDK for audio-driven lip-sync video generation workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
+The InfiniteTalk API SDK packages JavaScript, Python, Ruby, Go, and Java clients for InfiniteTalk on RunAPI. Use it for audio-driven talking video workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
-InfiniteTalk belongs to the MeiGen-AI catalog on RunAPI. The public model page is https://runapi.ai/models/infinitetalk; variant pages below carry pricing, rate-limit, and commercial-usage details. The public `infinitetalk-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
+InfiniteTalk is listed in the RunAPI model catalog at https://runapi.ai/models/infinitetalk. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `infinitetalk-sdk` repository groups the language packages, examples, CI, and release tags for this model.
 
 ## Install
 
 ```bash
 npm install @runapi.ai/infinitetalk
+pip install runapi-infinitetalk
 gem install runapi-infinitetalk
 go get github.com/runapi-ai/infinitetalk-sdk/go@latest
 ```
 
-## What you can build
+Gradle:
 
-- Build creative tools, agent pipelines, and production integrations with the infinitetalk api SDK.
-- Keep one model-specific repository while installing only the language package your app needs.
-- Use `create` for submit-only jobs, `get` for status lookup, and `run` for submit-and-poll scripts.
-- Handle authentication, validation, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
-
-The JavaScript client exposes audio to video resources, and the Ruby and Go packages mirror the same RunAPI task lifecycle.
-
-## JavaScript quick start
-
-```typescript
-import { InfinitetalkClient } from '@runapi.ai/infinitetalk';
-
-const client = new InfinitetalkClient();
-
-const task = await client.audioToVideo.create({
-  // Pass the InfiniteTalk request body documented at https://runapi.ai/docs#infinitetalk.
-});
-
-const status = await client.audioToVideo.get(task.id);
+```kotlin
+dependencies {
+  implementation("ai.runapi:runapi-infinitetalk:0.1.0")
+}
 ```
 
-For short scripts, use `run` with the same JSON body to create the task and wait for completion. For web request handlers, prefer `create` plus webhook or later `get` polling so the server does not hold a worker open.
+Maven:
+
+```xml
+<dependency>
+  <groupId>ai.runapi</groupId>
+  <artifactId>runapi-infinitetalk</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+Use the Java BOM when installing multiple RunAPI Java modules:
+
+```kotlin
+dependencies {
+  implementation(platform("ai.runapi:runapi-bom:0.1.0"))
+  implementation("ai.runapi:runapi-infinitetalk")
+}
+```
+
+## What you can build
+
+- Build apps, agent workflows, batch jobs, and production services around InfiniteTalk requests.
+- Install only the language package your app needs while keeping one model-specific repository for docs and releases.
+- Use `create` for submit-only jobs, `get` for status lookup, and `run` for submit-and-poll scripts.
+- Upload local files, URL files, or base64 files through shared RunAPI file helpers.
+- Handle validation, authentication, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
+
+## Java quick start
+
+```java
+import ai.runapi.infinitetalk.InfiniteTalkClient;
+import ai.runapi.infinitetalk.types.AudioToVideoParams;
+import ai.runapi.infinitetalk.types.CompletedAudioToVideoResponse;
+import ai.runapi.infinitetalk.types.AudioToVideoModel;
+
+InfiniteTalkClient client = InfiniteTalkClient.builder()
+    .apiKey(System.getenv("RUNAPI_API_KEY"))
+    .build();
+
+CompletedAudioToVideoResponse result = client.audioToVideo().run(
+    AudioToVideoParams.builder()
+        .model(AudioToVideoModel.INFINITETALK_FROM_AUDIO)
+        .sourceImageUrl("https://cdn.runapi.ai/public/samples/image.jpg")
+        .sourceAudioUrl("https://cdn.runapi.ai/public/samples/music.mp3")
+        .prompt("A cinematic product shot with soft studio lighting")
+        .outputResolution("480p")
+        .build()
+);
+```
+
+Java packages target Java 8 bytecode and are tested on Java 8, 11, 17, and 21. Each model artifact depends on `ai.runapi:runapi-core`, so application code normally installs only `ai.runapi:runapi-infinitetalk`.
+
+## Task lifecycle
+
+Most media endpoints are asynchronous. `create()` submits a task and returns its id, `get(id)` fetches the latest task state, and `run(params)` creates the task and polls until it reaches a terminal state. In web request handlers, prefer `create()` plus webhook or later `get()` polling so the server does not hold a worker open.
 
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/infinitetalk`.
-- `ruby/` publishes `runapi-infinitetalk` when RubyGems publishing resumes.
-- `go/` publishes `github.com/runapi-ai/infinitetalk-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
+- `python/` publishes `runapi-infinitetalk`.
+- `ruby/` publishes `runapi-infinitetalk`.
+- `go/` publishes `github.com/runapi-ai/infinitetalk-sdk/go`.
+- `java/` publishes `ai.runapi:runapi-infinitetalk` and uses `ai.runapi:runapi-core`.
 
 ## Public links
 
@@ -75,24 +119,24 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 
 ## Pricing and variants
 
-Use the most specific infinitetalk api variant page for pricing, rate limits, and commercial usage:
+Use the most specific InfiniteTalk variant page for pricing, rate limits, and commercial usage:
 - [From audio](https://runapi.ai/models/infinitetalk)
 
-Default pricing link for the infinitetalk api SDK: https://runapi.ai/models/infinitetalk
+Default pricing link for the InfiniteTalk SDK: https://runapi.ai/models/infinitetalk
 
-## Generated file storage
+## File storage
 
 RunAPI-generated file URLs are temporary. Download and store generated images, videos, audio, or other files in your own durable storage within 7 days; do not treat returned URLs as long-term assets.
 
 ## FAQ
 
-### Which package should I install for infinitetalk api work?
+### Which package should I install for InfiniteTalk work?
 
-Install the model package for your language: `@runapi.ai/infinitetalk`, `runapi-infinitetalk`, or `github.com/runapi-ai/infinitetalk-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/infinitetalk` on npm, `runapi-infinitetalk` on PyPI, `runapi-infinitetalk` on RubyGems, `github.com/runapi-ai/infinitetalk-sdk/go`, or `ai.runapi:runapi-infinitetalk`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
-Primary infinitetalk api links point to https://runapi.ai/models/infinitetalk. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/infinitetalk. Provider comparisons point to https://runapi.ai/providers/meigen-ai, and broad browsing points to https://runapi.ai/models.
+Primary InfiniteTalk links point to https://runapi.ai/models/infinitetalk. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/infinitetalk. Provider comparisons point to https://runapi.ai/providers/meigen-ai, and broad browsing points to https://runapi.ai/models.
 
 ## License
 

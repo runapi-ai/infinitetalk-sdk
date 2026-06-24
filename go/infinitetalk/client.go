@@ -53,7 +53,11 @@ type AudioToVideo struct{ http core.HTTPClient }
 // Use Get to poll for the result, or use Run for a blocking helper that polls automatically.
 func (r *AudioToVideo) Create(ctx context.Context, params AudioToVideoParams, opts ...option.RequestOption) (*core.TaskCreateResponse, error) {
 	requestOptions, _ := option.ResolveRequestOptions(opts...)
-	return core.PostJSON[core.TaskCreateResponse](ctx, r.http, audioToVideoPath, core.CompactParams(params), requestOptions)
+	body := core.CompactParams(params)
+	if err := core.ValidateParams(contractSchema["audio-to-video"], body); err != nil {
+		return nil, err
+	}
+	return core.PostJSON[core.TaskCreateResponse](ctx, r.http, audioToVideoPath, body, requestOptions)
 }
 
 // Get retrieves the current status and result of an audio-to-video task by its ID.

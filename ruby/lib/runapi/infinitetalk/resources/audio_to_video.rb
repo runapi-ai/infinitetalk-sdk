@@ -36,21 +36,13 @@ module RunApi
         private
 
         def validate_params!(params)
-          model = param(params, :model)
-          raise Core::ValidationError, "model is required" unless model
-          unless Types::MODELS.include?(model)
-            raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::MODELS.join(", ")}"
-          end
+          validate_contract!(CONTRACT["audio-to-video"], params)
 
-          validate_required!(params, :source_image_url)
-          validate_required!(params, :source_audio_url)
           prompt = param(params, :prompt)
           raise Core::ValidationError, "prompt is required" unless prompt.is_a?(String) && !prompt.empty?
           if prompt.length > PROMPT_MAX_LENGTH
             raise Core::ValidationError, "prompt must be at most #{PROMPT_MAX_LENGTH} characters"
           end
-
-          validate_optional!(params, :output_resolution, Types::RESOLUTIONS)
 
           seed = param(params, :seed)
           return if seed.nil?
@@ -59,13 +51,6 @@ module RunApi
           return if seed && SEED_RANGE.cover?(seed)
 
           raise Core::ValidationError, "seed must be an integer between #{SEED_RANGE.min} and #{SEED_RANGE.max}"
-        end
-
-        def validate_required!(params, key)
-          value = param(params, key)
-          return if value.is_a?(String) ? !value.empty? : !value.nil?
-
-          raise Core::ValidationError, "#{key} is required"
         end
       end
     end

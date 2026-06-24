@@ -3,11 +3,6 @@
 module RunApi
   module Infinitetalk
     module Types
-      # Available model identifiers for audio-to-video generation.
-      MODELS = %w[infinitetalk-from-audio].freeze
-      # Output resolution options. Higher resolution increases fidelity but takes longer.
-      RESOLUTIONS = %w[480p 720p].freeze
-
       # A generated video asset.
       class Video < RunApi::Core::BaseModel
         optional :url, String

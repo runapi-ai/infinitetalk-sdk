@@ -1,7 +1,10 @@
 {
   "name": "@runapi.ai/infinitetalk",
+  "runapi": {
+    "slug": "infinitetalk"
+  },
   "version": "0.2.6",
-  "description": "RunAPI InfiniteTalk SDK for JavaScript, Ruby, and Go",
+  "description": "RunAPI InfiniteTalk SDK for audio-driven talking video workflows in JavaScript, Python, Ruby, Go, and Java",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -48,7 +51,15 @@
     "sdk",
     "typescript",
     "ruby",
-    "golang"
+    "golang",
+    "java",
+    "python",
+    "maven",
+    "gradle",
+    "video-generation",
+    "text-to-video",
+    "video-api",
+    "infinitetalk-api"
   ],
   "author": "RunAPI",
   "license": "Apache-2.0",

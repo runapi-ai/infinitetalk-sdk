@@ -131,14 +131,14 @@ def test_run_polls_and_narrows_completed_type():
 def test_create_requires_model():
     client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
     params = {k: v for k, v in VALID_PARAMS.items() if k != "model"}
-    with pytest.raises(ValidationError, match="model is required"):
+    with pytest.raises(ValidationError, match="model must be one of: infinitetalk-from-audio"):
         client.audio_to_video.create(**params)
 
 
 def test_create_rejects_unknown_model():
     client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
     params = {**VALID_PARAMS, "model": "not-a-model"}
-    with pytest.raises(ValidationError, match="Invalid model"):
+    with pytest.raises(ValidationError, match="model must be one of: infinitetalk-from-audio"):
         client.audio_to_video.create(**params)
 
 
@@ -173,7 +173,7 @@ def test_create_rejects_overlong_prompt():
 def test_create_rejects_invalid_resolution():
     client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
     params = {**VALID_PARAMS, "output_resolution": "1080p"}
-    with pytest.raises(ValidationError, match="Invalid output_resolution"):
+    with pytest.raises(ValidationError, match="output_resolution must be one of: 480p, 720p"):
         client.audio_to_video.create(**params)
 
 
@@ -198,18 +198,14 @@ def test_create_rejects_seed_above_range():
 def test_create_rejects_non_integer_seed():
     client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
     params = {**VALID_PARAMS, "seed": "not-a-number"}
-    with pytest.raises(
-        ValidationError, match="seed must be an integer between 10000 and 1000000"
-    ):
+    with pytest.raises(ValidationError, match="seed must be an integer"):
         client.audio_to_video.create(**params)
 
 
 def test_create_rejects_bool_seed():
     client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
     params = {**VALID_PARAMS, "seed": True}
-    with pytest.raises(
-        ValidationError, match="seed must be an integer between 10000 and 1000000"
-    ):
+    with pytest.raises(ValidationError, match="seed must be an integer"):
         client.audio_to_video.create(**params)
 
 
@@ -220,8 +216,7 @@ def test_create_accepts_seed_in_range():
     assert fake.calls[0][2]["seed"] == 500_000
 
 
-def test_create_accepts_integer_string_seed():
-    fake = FakeHttp({"id": "t1", "status": "pending"})
-    client = InfinitetalkClient(api_key="k", http_client=fake)
-    client.audio_to_video.create(**VALID_PARAMS, seed="500000")
-    assert fake.calls[0][2]["seed"] == "500000"
+def test_create_rejects_integer_string_seed():
+    client = InfinitetalkClient(api_key="k", http_client=FakeHttp())
+    with pytest.raises(ValidationError, match="seed must be an integer"):
+        client.audio_to_video.create(**VALID_PARAMS, seed="500000")

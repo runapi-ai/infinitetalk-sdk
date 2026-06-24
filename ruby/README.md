@@ -7,13 +7,13 @@ This infinitetalk api README is the Ruby package guide inside the public `infini
 ## Install
 
 ```bash
-gem install runapi-infinitalk
+gem install runapi-infinitetalk
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-infinitalk"
+require "runapi-infinitetalk"
 
 client = RunApi::Infinitalk::Client.new
 task = client.from_audios.create(
