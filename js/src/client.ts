@@ -11,8 +11,8 @@ import { AudioToVideo } from './resources/audio-to-video';
  * const client = new InfinitetalkClient({ apiKey: 'sk-...' });
  * const result = await client.audioToVideo.run({
  *   model: 'infinitetalk-from-audio',
- *   source_image_url: 'https://example.com/portrait.jpg',
- *   source_audio_url: 'https://example.com/voice.mp3',
+ *   source_image_url: 'https://cdn.runapi.ai/public/samples/portrait.jpg',
+ *   source_audio_url: 'https://cdn.runapi.ai/public/samples/voice.mp3',
  *   prompt: 'A young woman talking on a podcast',
  * });
  * console.log(result.videos[0].url);

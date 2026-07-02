@@ -9,8 +9,8 @@ module RunApi
     #   client = RunApi::Infinitetalk::Client.new(api_key: "sk-...")
     #   result = client.audio_to_video.run(
     #     model: "infinitetalk-from-audio",
-    #     source_image_url: "https://example.com/portrait.jpg",
-    #     source_audio_url: "https://example.com/voice.mp3",
+    #     source_image_url: "https://cdn.runapi.ai/public/samples/portrait.jpg",
+    #     source_audio_url: "https://cdn.runapi.ai/public/samples/voice.mp3",
     #     prompt: "A young woman talking on a podcast"
     #   )
     #   puts result.videos.first.url

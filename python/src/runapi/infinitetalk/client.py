@@ -17,8 +17,8 @@ class InfinitetalkClient:
         client = InfinitetalkClient(api_key="sk-...")
         result = client.audio_to_video.run(
             model="infinitetalk-from-audio",
-            source_image_url="https://example.com/face.jpg",
-            source_audio_url="https://example.com/voice.mp3",
+            source_image_url="https://cdn.runapi.ai/public/samples/portrait.jpg",
+            source_audio_url="https://cdn.runapi.ai/public/samples/voice.mp3",
             prompt="A person speaking to the camera",
         )
     """

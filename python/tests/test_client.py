@@ -33,8 +33,8 @@ def reset_config(monkeypatch):
 
 VALID_PARAMS = dict(
     model="infinitetalk-from-audio",
-    source_image_url="https://example.com/face.jpg",
-    source_audio_url="https://example.com/voice.mp3",
+    source_image_url="https://cdn.runapi.ai/public/samples/portrait.jpg",
+    source_audio_url="https://cdn.runapi.ai/public/samples/voice.mp3",
     prompt="A person speaking to the camera",
 )
 
@@ -94,8 +94,8 @@ def test_create_posts_compacted_body():
             "/api/v1/infinitetalk/audio_to_video",
             {
                 "model": "infinitetalk-from-audio",
-                "source_image_url": "https://example.com/face.jpg",
-                "source_audio_url": "https://example.com/voice.mp3",
+                "source_image_url": "https://cdn.runapi.ai/public/samples/portrait.jpg",
+                "source_audio_url": "https://cdn.runapi.ai/public/samples/voice.mp3",
                 "prompt": "A person speaking to the camera",
                 "output_resolution": "720p",
             },

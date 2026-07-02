@@ -1,13 +1,13 @@
-# Infinitetalk API Go SDK for RunAPI
+# InfiniteTalk Go SDK for RunAPI
 
-The infinitetalk api Go SDK is the language-specific package for InfiniteTalk on RunAPI. Use this infinitetalk api package for text-to-video, image-to-video, video editing, and animation flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Go.
+The InfiniteTalk Go SDK is the language-specific package for InfiniteTalk on RunAPI. Use this package for video generation, animation, and video editing workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Go.
 
-This infinitetalk api README is the Go package guide inside the public `infinitalk-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/infinitalk; for API reference, use https://runapi.ai/docs#infinitalk; for SDK docs, use https://runapi.ai/docs#sdk-infinitalk.
+This README is the Go package guide inside the public `infinitetalk-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/infinitetalk; for API reference, use https://runapi.ai/docs#infinitetalk; for SDK docs, use https://runapi.ai/docs#sdk-infinitetalk.
 
 ## Install
 
 ```bash
-go get github.com/runapi-ai/infinitalk-sdk/go@latest
+go get github.com/runapi-ai/infinitetalk-sdk/go@latest
 ```
 
 ## Quick start
@@ -16,14 +16,14 @@ go get github.com/runapi-ai/infinitalk-sdk/go@latest
 import (
   "context"
 
-  "github.com/runapi-ai/infinitalk-sdk/go/infinitalk"
+  "github.com/runapi-ai/infinitetalk-sdk/go/infinitetalk"
 )
 
-client, err := infinitalk.NewClient()
-task, err := client.FromAudios.Create(context.Background(), infinitalk.FromAudioParams{
-  // Pass the InfiniteTalk JSON request body from https://runapi.ai/docs#infinitalk.
+client, err := infinitetalk.NewClient()
+task, err := client.AudioToVideo.Create(context.Background(), infinitetalk.AudioToVideoParams{
+  // Pass the InfiniteTalk JSON request body from https://runapi.ai/docs#infinitetalk.
 })
-status, err := client.FromAudios.Get(context.Background(), task.ID)
+status, err := client.AudioToVideo.Get(context.Background(), task.ID)
 ```
 
 Use `create` when you want to submit a task and return quickly, `get` when you need the latest task state, and `run` when a script should create and poll until completion. In web request handlers, prefer `create` plus webhook or later `get` polling so a worker is not held open.
@@ -32,17 +32,17 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ## Language notes
 
-Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building video services, CLIs, or workers. The available resources include from audios. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
+Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building video services, CLIs, or workers. The available resources are `AudioToVideo`. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
 
 ## Links
 
-- Model page: https://runapi.ai/models/infinitalk
-- SDK docs: https://runapi.ai/docs#sdk-infinitalk
-- Product docs: https://runapi.ai/docs#infinitalk
-- Pricing and rate limits: https://runapi.ai/models/infinitalk
+- Model page: https://runapi.ai/models/infinitetalk
+- SDK docs: https://runapi.ai/docs#sdk-infinitetalk
+- Product docs: https://runapi.ai/docs#infinitetalk
+- Pricing and rate limits: https://runapi.ai/models/infinitetalk
 - Provider comparison: https://runapi.ai/providers/meigen-ai
 - Full catalog: https://runapi.ai/models
-- Repository: https://github.com/runapi-ai/infinitalk-sdk
+- Repository: https://github.com/runapi-ai/infinitetalk-sdk
 
 ## License
 
