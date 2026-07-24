@@ -13,7 +13,7 @@ gem install runapi-infinitetalk
 ## Quick start
 
 ```ruby
-require "runapi-infinitetalk"
+require "runapi/infinitetalk"
 
 client = RunApi::Infinitalk::Client.new
 task = client.audio_to_video.create(
