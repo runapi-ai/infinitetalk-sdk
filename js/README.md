@@ -2,7 +2,7 @@
 
 The InfiniteTalk JavaScript SDK is the language-specific package for InfiniteTalk on RunAPI. Use this package for video generation, animation, and video editing workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
 
-This README is the JavaScript package guide inside the public `infinitetalk-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/infinitetalk; for API reference, use https://runapi.ai/docs#infinitetalk; for SDK docs, use https://runapi.ai/docs#sdk-infinitetalk.
+This README is the JavaScript package guide inside the public `infinitetalk-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/infinitetalk; for API reference, use https://runapi.ai/docs/api/infinitetalk/audio-to-video; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Install
 
@@ -17,7 +17,7 @@ import { InfinitetalkClient } from '@runapi.ai/infinitetalk';
 
 const client = new InfinitetalkClient();
 const task = await client.audioToVideo.create({
-  // Pass the InfiniteTalk JSON request body from https://runapi.ai/docs#infinitetalk.
+  // Pass the InfiniteTalk JSON request body from https://runapi.ai/docs/api/infinitetalk/audio-to-video.
 });
 const status = await client.audioToVideo.get(task.id);
 ```
@@ -33,8 +33,8 @@ Use the TypeScript types in `src/types.ts` and the resource classes under `src/r
 ## Links
 
 - Model page: https://runapi.ai/models/infinitetalk
-- SDK docs: https://runapi.ai/docs#sdk-infinitetalk
-- Product docs: https://runapi.ai/docs#infinitetalk
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/infinitetalk/audio-to-video
 - Pricing and rate limits: https://runapi.ai/models/infinitetalk
 - Provider comparison: https://runapi.ai/providers/meigen-ai
 - Full catalog: https://runapi.ai/models

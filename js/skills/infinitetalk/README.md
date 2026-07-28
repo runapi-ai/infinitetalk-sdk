@@ -61,8 +61,8 @@ const url = result.videos[0].url;
 ## Routing
 
 - Model page: https://runapi.ai/models/infinitetalk
-- Product docs: https://runapi.ai/docs#infinitetalk
-- SDK docs: https://runapi.ai/docs#sdk-infinitetalk
+- Product docs: https://runapi.ai/docs/api/infinitetalk/audio-to-video
+- SDK docs: https://runapi.ai/docs/resources/sdks
 - SDK repository: https://github.com/runapi-ai/infinitetalk-sdk
 - Pricing and rate limits: https://runapi.ai/models/infinitetalk
 - Provider comparison: https://runapi.ai/providers/meigen-ai

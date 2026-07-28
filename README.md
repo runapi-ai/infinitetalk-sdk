@@ -112,8 +112,8 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 ## Public links
 
 - Model page: https://runapi.ai/models/infinitetalk
-- SDK docs: https://runapi.ai/docs#sdk-infinitetalk
-- Product docs: https://runapi.ai/docs#infinitetalk
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/infinitetalk/audio-to-video
 - SDK repository: https://github.com/runapi-ai/infinitetalk-sdk
 - PHP package repository: https://github.com/runapi-ai/infinitetalk-php
 - Skill repository: https://github.com/runapi-ai/infinitetalk
