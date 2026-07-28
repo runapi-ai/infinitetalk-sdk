@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
 
 /** Model identifier for InfiniteTalk audio-to-video generation. */
 export type InfinitetalkModel = 'infinitetalk-from-audio';
@@ -7,7 +7,7 @@ export type InfinitetalkModel = 'infinitetalk-from-audio';
 export type Resolution = '480p' | '720p';
 
 /** Acknowledgement returned when a generation task is accepted. */
-export interface TaskCreateResponse {
+export interface TaskCreateResponse extends TaskBillingResponse {
   /** Unique task identifier used to poll for results. */
   id: string;
   status?: AsyncTaskStatus;
@@ -46,7 +46,7 @@ export interface AudioToVideoParams {
  * While processing, `videos` is absent; once `status` is `'completed'`,
  * `videos` contains the generated lip-synced video(s).
  */
-export interface AudioToVideoResponse {
+export interface AudioToVideoResponse extends TaskResponse {
   id: string;
   status: AsyncTaskStatus;
   /** Present only when the task has completed successfully. */

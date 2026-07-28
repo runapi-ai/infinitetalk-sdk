@@ -1,5 +1,7 @@
 package infinitetalk
 
+import "github.com/runapi-ai/core-sdk/go/core"
+
 // AudioToVideoModel identifies which InfiniteTalk model variant to use for generation.
 type AudioToVideoModel string
 
@@ -22,6 +24,7 @@ const (
 
 // AsyncTaskResponse contains the common fields shared by all asynchronous task responses.
 type AsyncTaskResponse struct {
+	core.TaskBillingFacts
 	ID     string     `json:"id"`
 	Status TaskStatus `json:"status"`
 	Error  string     `json:"error,omitempty"`
