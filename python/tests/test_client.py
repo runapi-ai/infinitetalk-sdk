@@ -97,10 +97,8 @@ def test_create_posts_compacted_body():
                 "source_image_url": "https://cdn.runapi.ai/public/samples/portrait.jpg",
                 "source_audio_url": "https://cdn.runapi.ai/public/samples/voice.mp3",
                 "prompt": "A person speaking to the camera",
-                "output_resolution": "720p",
-            },
-        ),
-    ]
+                "output_resolution": "720p"},
+        )]
     assert isinstance(result, AudioToVideoResponse)
     assert result.id == "t1"
 
@@ -115,7 +113,7 @@ def test_get_fetches_by_id():
 def test_run_polls_and_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "videos": [{"url": "https://x/y.mp4"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "videos": [{"url": "https://x/y.mp4"}]},
     )
     client = InfinitetalkClient(api_key="k", http_client=fake)
     result = client.audio_to_video.run(**VALID_PARAMS)

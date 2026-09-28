@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskResponse } from '@runapi.ai/core';
 
 /** Model identifier for InfiniteTalk audio-to-video generation. */
 export type InfinitetalkModel = 'infinitetalk-from-audio';
@@ -7,7 +7,7 @@ export type InfinitetalkModel = 'infinitetalk-from-audio';
 export type Resolution = '480p' | '720p';
 
 /** Acknowledgement returned when a generation task is accepted. */
-export interface TaskCreateResponse extends TaskBillingResponse {
+export interface TaskCreateResponse {
   /** Unique task identifier used to poll for results. */
   id: string;
   status?: AsyncTaskStatus;
