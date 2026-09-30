@@ -16,8 +16,8 @@ public final class AudioToVideoParams {
 
   private AudioToVideoParams(Builder builder) {
     this.model = builder.model;
-    this.sourceImageUrl = InfinitetalkParamUtils.requireNonBlank(builder.sourceImageUrl, "sourceImageUrl");
-    this.sourceAudioUrl = InfinitetalkParamUtils.requireNonBlank(builder.sourceAudioUrl, "sourceAudioUrl");
+    this.sourceImageUrl = builder.sourceImageUrl;
+    this.sourceAudioUrl = builder.sourceAudioUrl;
     this.prompt = builder.prompt;
     this.callbackUrl = builder.callbackUrl;
     this.outputResolution = builder.outputResolution;
@@ -69,38 +69,38 @@ public final class AudioToVideoParams {
 
     /** Sets the model slug using a string value. */
     public Builder model(String value) {
-      this.model = InfinitetalkParamUtils.requireNonBlankTrim(value, "model");
+      this.model = value;
       return this;
     }
 
 
     /** Sets the source image URL. */
     public Builder sourceImageUrl(String value) {
-      this.sourceImageUrl = InfinitetalkParamUtils.requireNonBlank(value, "sourceImageUrl");
+      this.sourceImageUrl = value;
       return this;
     }
 
     /** Sets the source audio URL. */
     public Builder sourceAudioUrl(String value) {
-      this.sourceAudioUrl = InfinitetalkParamUtils.requireNonBlank(value, "sourceAudioUrl");
+      this.sourceAudioUrl = value;
       return this;
     }
 
     /** Sets the text prompt. */
     public Builder prompt(String value) {
-      this.prompt = InfinitetalkParamUtils.requireNonBlank(value, "prompt");
+      this.prompt = value;
       return this;
     }
 
     /** Sets the webhook URL for task completion notifications. */
     public Builder callbackUrl(String value) {
-      this.callbackUrl = InfinitetalkParamUtils.requireNonBlank(value, "callbackUrl");
+      this.callbackUrl = value;
       return this;
     }
 
     /** Sets the output resolution. */
     public Builder outputResolution(String value) {
-      this.outputResolution = InfinitetalkParamUtils.requireNonBlank(value, "outputResolution");
+      this.outputResolution = value;
       return this;
     }
 

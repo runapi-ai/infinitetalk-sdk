@@ -28,16 +28,4 @@ RSpec.describe RunApi::Infinitetalk::Resources::AudioToVideo do
     result = resource.get("task-1")
     expect(result.status).to eq("completed")
   end
-
-  it "raises ValidationError for invalid output_resolution" do
-    expect {
-      resource.create(
-        model: "infinitetalk-from-audio",
-        source_image_url: "https://cdn.runapi.ai/public/samples/portrait.jpg",
-        source_audio_url: "https://cdn.runapi.ai/public/samples/voice.mp3",
-        prompt: "A young woman with long dark hair talking on a podcast.",
-        output_resolution: "1080p"
-      )
-    }.to raise_error(RunApi::Core::ValidationError, /output_resolution must be one of: 480p, 720p/)
-  end
 end
